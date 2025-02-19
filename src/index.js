@@ -65,7 +65,7 @@ app.put("/siswa/:id", async (req, res) => {
 app.delete("/siswa/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    await prisma.user.delete({ where: { id } });
+    await prisma.user.delete({ where: { id: parseInt(id) } });
     res.json({ message: "Siswa berhasil dihapus" });
   } catch (error) {
     res.status(400).send({ error: error.message });
